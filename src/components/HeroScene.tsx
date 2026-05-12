@@ -74,8 +74,7 @@ function ParticleField() {
   const { mouse, viewport } = useThree();
   
   const sphere = useMemo(() => {
-    const positions = random.inSphere(new Float32Array(9000), { radius: 3 });
-    return positions;
+    return random.inSphere(new Float32Array(9000), { radius: 3 }) as Float32Array;
   }, []);
 
   useFrame((state, delta) => {
@@ -102,7 +101,7 @@ function ParticleField() {
           blending={THREE.AdditiveBlending}
         />
       </Points>
-      <Points positions={sphere.slice(0, 3000)} stride={3} frustumCulled={false}>
+      <Points positions={sphere.slice(0, 3000) as unknown as Float32Array} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
           color="#009999" // Teal
