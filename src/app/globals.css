@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-remag-blue-deep: #154e70;
+  --color-remag-teal: #009999;
+  --color-remag-green: #1b9905;
+  --color-remag-white: #ffffff;
+  --color-remag-gray-light: #f3f7f6;
+  --color-remag-gray-text: #4b5563;
+  --color-remag-dark-bg: #062f3f;
+  
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-remag-white);
+    color: var(--color-remag-gray-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* 🏔️ LUXURY NOISE OVERLAY */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .container {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  .organic-border {
+    border-radius: 40px 4px 40px 4px;
+  }
+
+  .text-title-xl {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+}
+
+/* 🏔️ TACTICAL UTILS */
+.tactic-grid {
+  background-image: radial-gradient(rgba(21, 78, 112, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mask-text {
+  -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+  color: transparent;
+}

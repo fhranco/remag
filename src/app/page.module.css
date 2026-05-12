@@ -1,0 +1,172 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ⛰️ NAV (Ultra Glassmorphism) */
+.nav {
+  height: 90px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(30px);
+  border-bottom: 1px solid var(--border-suttle);
+}
+
+.logo {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.menu {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.menuLink {
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  transition: 0.4s var(--transition-cinematic);
+  opacity: 0.5;
+}
+
+.menuLink:hover {
+  opacity: 1;
+  color: var(--remag-teal);
+}
+
+/* 🏔️ MAIN CONTENT */
+.main {
+  flex: 1;
+}
+
+/* 🏔️ HERO (Cinematic Opening) */
+.heroSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 180px 0;
+}
+
+.heroContent {
+  width: 90%;
+  max-width: 1100px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.overTitle {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  color: var(--remag-teal);
+  margin-bottom: 3rem;
+  display: block;
+}
+
+.h1 {
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  margin-bottom: 3rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: white; /* Necessary for difference blend mode to work effectively */
+  mix-blend-mode: difference;
+  z-index: 10;
+  position: relative;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  max-width: 650px;
+  margin: 0 auto 5rem;
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.playBtn {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: 0.4s;
+  display: flex;
+  align-items: center;
+}
+
+.playBtn:hover {
+  opacity: 1;
+  color: var(--remag-green);
+}
+
+/* ⛰️ GRID EXPERIENCE */
+.gridSection {
+  padding: 240px 0;
+  background: var(--bg-white);
+}
+
+.divider {
+  width: 160px;
+  height: 4px;
+  background: var(--remag-green);
+  margin-top: 2rem;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 50px;
+}
+
+.miniBtn {
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-main);
+  opacity: 0.4;
+  letter-spacing: 0.2rem;
+  transition: 0.4s;
+}
+
+.miniBtn:hover {
+  opacity: 1;
+  letter-spacing: 0.3rem;
+  color: var(--remag-green);
+}
+
+/* 🚀 AI FOOTER */
+.footer {
+  padding: 140px 0;
+  border-top: 1px solid var(--border-suttle);
+  background: var(--bg-white);
+}
+
+.aiBadge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.4rem;
+  opacity: 0.2;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav { background: rgba(10, 15, 20, 0.7); }
+}
