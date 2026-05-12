@@ -90,7 +90,7 @@ function ParticleField() {
 
   return (
     <group rotation={[0, 0, Math.PI / 6]}>
-      <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
+      <Points ref={ref} positions={sphere as any} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
           color="#1B9905" // Green
@@ -101,7 +101,7 @@ function ParticleField() {
           blending={THREE.AdditiveBlending}
         />
       </Points>
-      <Points positions={sphere.slice(0, 3000) as unknown as Float32Array} stride={3} frustumCulled={false}>
+      <Points positions={sphere.slice(0, 3000) as any} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
           color="#009999" // Teal
