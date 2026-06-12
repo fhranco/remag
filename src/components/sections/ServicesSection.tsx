@@ -66,13 +66,13 @@ export const ServicesSection = () => {
         </div>
 
         {/* Orbital Layout Container */}
-        <div className="relative w-full max-w-[500px] mx-auto aspect-square my-10">
+        <div className="relative w-[80%] xs:w-[85%] sm:w-full max-w-[280px] xs:max-w-[340px] sm:max-w-[420px] md:max-w-[500px] mx-auto aspect-square my-10">
           
           {/* Thin Orbit Ring */}
           <div className="absolute inset-0 rounded-full border border-black/10"></div>
           
           {/* Central Large Circle */}
-          <div className="absolute inset-[18%] bg-[#f4f4f4] rounded-full shadow-[inset_0_4px_20px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center p-6 md:p-10 transition-all duration-500 overflow-hidden">
+          <div className="absolute inset-[18%] bg-[#f4f4f4] rounded-full shadow-[inset_0_4px_20px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center p-4 md:p-10 transition-all duration-500 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeId}
@@ -83,15 +83,15 @@ export const ServicesSection = () => {
                 className="flex flex-col items-center"
               >
                 {/* Active Icon Colored */}
-                <div className="text-remag-teal mb-3 md:mb-4">
+                <div className="text-remag-teal mb-2 md:mb-4">
                   {services[activeId].icon}
                 </div>
                 
-                <h3 className="text-xl md:text-2xl font-display font-black uppercase text-remag-blue-deep mb-2 tracking-tight">
+                <h3 className="text-[11px] xs:text-xs sm:text-sm md:text-2xl font-display font-black uppercase text-remag-blue-deep mb-1 sm:mb-2 tracking-tight leading-tight">
                   {services[activeId].title}
                 </h3>
                 
-                <p className="text-xs md:text-sm font-sans text-gray-500 leading-relaxed font-normal max-w-[280px]">
+                <p className="text-[8px] xs:text-[9px] sm:text-[10px] md:text-sm font-sans text-gray-500 leading-normal md:leading-relaxed font-normal max-w-[160px] xs:max-w-[200px] md:max-w-[280px] px-1">
                   {services[activeId].description}
                 </p>
               </motion.div>
