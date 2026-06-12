@@ -32,31 +32,32 @@ export const CommunitySection = () => {
             className="space-y-12"
           >
             <SectionTitle 
-              subtitle="Participación Activa"
-              title="Reciclar también parte por casa"
+              subtitle="06 // IMPACTO SOCIAL"
+              title="El cambio comienza con la cultura del residuo."
             />
             <p className="text-lg font-medium text-remag-gray-text italic leading-relaxed">
-              El reciclaje no depende solo de las empresas o instituciones. También comienza con las decisiones cotidianas de cada persona. Queremos acercar la gestión de residuos a la comunidad, entregando información clara.
+              La mejor infraestructura es inútil sin una comunidad educada. Por eso, integramos la educación ambiental dentro de cada operación que implementamos en comunas y empresas.
             </p>
 
             <div className="space-y-8">
-               <h4 className="text-xl font-black uppercase italic tracking-tighter text-remag-blue-deep">Recomendaciones:</h4>
-               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+               <h4 className="text-xl font-black uppercase italic tracking-tighter text-remag-blue-deep">Líneas de Acción:</h4>
+               <ul className="grid grid-cols-1 gap-6">
                   {[
-                    "Lleva materiales limpios y secos.",
-                    "No dejes basura fuera de contenedores.",
-                    "Revisa qué residuos recibe cada punto.",
-                    "Separa correctamente antes de reciclar."
+                    "Para Empresas: Programas de segregación en origen para operarios y personal administrativo.",
+                    "Para Colegios: Talleres prácticos de economía circular y visitas guiadas a puntos limpios.",
+                    "Para Ciudadanos: Información transparente sobre cómo limpiar, secar y separar cada material para garantizar su reciclaje."
                   ].map((text, i) => (
-                    <li key={i} className="flex items-start gap-4 text-sm font-medium text-remag-gray-text italic">
-                       <CheckCircle2 className="text-remag-green shrink-0" size={18} />
+                    <li key={i} className="flex items-start gap-4 text-base font-bold text-remag-gray-text italic uppercase tracking-tighter">
+                       <CheckCircle2 className="text-remag-green shrink-0 mt-1" size={18} />
                        {text}
                     </li>
                   ))}
                </ul>
             </div>
 
-            <Button variant="outline">CONOCE DÓNDE RECICLAR</Button>
+            <div className="pt-4">
+              <Button variant="outline" className="!py-3 !px-6 !text-[10px]">Descargar Guías de Separación</Button>
+            </div>
           </motion.div>
         </div>
       </Container>

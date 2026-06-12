@@ -21,24 +21,22 @@ export const FinalCTASection = () => {
           <div className="flex flex-col items-center gap-6">
             <div className="h-[2px] w-20 bg-remag-green" />
             <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.6em] text-remag-green italic">
-              Únete a la Revolución Circular
+              Compromiso Regional
             </span>
           </div>
 
           <h2 className="text-4xl md:text-[5rem] font-black uppercase tracking-tighter italic leading-[0.9] text-white">
-            SEAMOS PARTE DE UNA <br />
-            <span className="text-remag-teal">REGIÓN QUE GESTIONA</span><br /> 
-            MEJOR SUS RESIDUOS.
+            Gestiona tus residuos <br />
+            con un <span className="text-remag-teal">partner real</span>
           </h2>
 
           <p className="text-xl md:text-2xl font-medium text-white/50 italic leading-relaxed max-w-2xl mx-auto">
-            En REMAG creemos que cuidar Magallanes es una tarea compartida. 
-            Trabajamos para construir una gestión ambiental más cercana, profesional y sostenible.
+            Ya seas empresa, municipio o ciudadano, REMAG es el aliado para una gestión responsable, eficiente y transparente.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8">
-            <Button variant="secondary" className="w-full sm:w-auto h-20 !px-12 !text-xs">HABLEMOS DE TU GESTIÓN</Button>
-            <Button variant="ghost" className="text-white hover:text-remag-teal !text-xs">CONOCER PUNTOS DE RECICLAJE</Button>
+            <Button variant="secondary" className="w-full sm:w-auto h-20 !px-12 !text-xs">Hablar con un especialista</Button>
+            <Button variant="ghost" className="text-white hover:text-remag-teal !text-xs">Conocer puntos de reciclaje</Button>
           </div>
         </motion.div>
       </Container>

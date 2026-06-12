@@ -48,12 +48,12 @@ export const SectionTitle = ({
     {subtitle && (
       <div className={`flex items-center gap-3 ${align === 'center' ? 'justify-center' : 'justify-start'}`}>
         <div className={`h-[1px] w-8 ${light ? 'bg-white/30' : 'bg-remag-teal/30'}`} />
-        <span className={`text-[10px] font-black uppercase tracking-[0.5em] italic ${light ? 'text-white/60' : 'text-remag-teal'}`}>
+        <span className={`text-[10px] font-display font-black tracking-[0.3em] ${light ? 'text-white/60' : 'text-remag-teal'}`}>
           {subtitle}
         </span>
       </div>
     )}
-    <h2 className={`text-3xl md:text-5xl font-black uppercase tracking-tighter italic leading-[0.9] ${light ? 'text-white' : 'text-remag-blue-deep'}`}>
+    <h2 className={`text-3xl md:text-5xl font-display font-black uppercase tracking-tight leading-[0.95] ${light ? 'text-white' : 'text-remag-blue-deep'}`}>
       {title}
     </h2>
   </div>

@@ -7,10 +7,11 @@
   --color-remag-white: #ffffff;
   --color-remag-gray-light: #f3f7f6;
   --color-remag-gray-text: #4b5563;
-  --color-remag-dark-bg: #062f3f;
+  --color-remag-dark-bg: #154e70;
+  --color-remag-bg-complement: #006666;
   
-  --font-display: var(--font-display);
-  --font-sans: var(--font-sans);
+  --font-display: 'Lato', sans-serif;
+  --font-sans: 'Inter', sans-serif;
 }
 
 @layer base {

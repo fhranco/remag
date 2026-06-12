@@ -1,38 +1,78 @@
 import { HeroSection } from "@/components/sections/HeroSection";
-import { PurposeSection } from "@/components/sections/PurposeSection";
-import { MissionVisionSection } from "@/components/sections/MissionVisionSection";
-import { ValuesSection } from "@/components/sections/ValuesSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
-import { ValueChainSection } from "@/components/sections/ValueChainSection";
+import { SustainableSolutionsSection } from "@/components/sections/SustainableSolutionsSection";
+import { ValuesSection } from "@/components/sections/ValuesSection";
+import { HowToRecycleSection } from "@/components/sections/HowToRecycleSection";
+import { PreparationStepsSection } from "@/components/sections/PreparationStepsSection";
+import { WhereToRecycleSection } from "@/components/sections/WhereToRecycleSection";
 import { LeyRepSection } from "@/components/sections/LeyRepSection";
-import { CommunitySection } from "@/components/sections/CommunitySection";
+import { ComplianceSection } from "@/components/sections/ComplianceSection";
+import { TrustedBySection } from "@/components/sections/TrustedBySection";
 import { EducationSection } from "@/components/sections/EducationSection";
-import { FinalCTASection } from "@/components/sections/FinalCTASection";
+import { Footer } from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <main className="relative bg-white">
-      {/* 🏔️ CAPA 1: IMPACTO VISUAL */}
-      <HeroSection />
+    <main className="relative bg-white h-[100dvh] w-full overflow-y-auto snap-y snap-mandatory scroll-smooth">
+      {/* 1. Hero */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <HeroSection />
+      </div>
 
-      {/* 🏔️ CAPA 2: IDENTIDAD Y PROPÓSITO */}
-      <PurposeSection />
-      
-      {/* 🏔️ CAPA 3: ESTRUCTURA INSTITUCIONAL */}
-      <MissionVisionSection />
-      <ValuesSection />
+      {/* 2. Nuestros Servicios */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <ServicesSection />
+      </div>
 
-      {/* 🏔️ CAPA 4: SOLUCIONES TÉCNICAS */}
-      <ServicesSection />
-      <ValueChainSection />
-      <LeyRepSection />
+      {/* 3. Impacto de Nuestra Gestión */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <SustainableSolutionsSection />
+      </div>
 
-      {/* 🏔️ CAPA 5: VINCULACIÓN Y EDUCACIÓN */}
-      <CommunitySection />
-      <EducationSection />
+      {/* 5. Nuestros Valores */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <ValuesSection />
+      </div>
 
-      {/* 🏔️ CAPA 6: CONVERSIÓN FINAL */}
-      <FinalCTASection />
+      {/* 6. El cuidado del medio ambiente parte por casa: Qué reciclar */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <HowToRecycleSection />
+      </div>
+
+      {/* 6. El cuidado del medio ambiente parte por casa: Cómo reciclar */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <PreparationStepsSection />
+      </div>
+
+      {/* 6. El cuidado del medio ambiente parte por casa: Dónde reciclar */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <WhereToRecycleSection />
+      </div>
+
+      {/* 7. Ley REP */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <LeyRepSection />
+      </div>
+
+      {/* 8. REMAG: Cumplimos con la normativa vigente */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <ComplianceSection />
+      </div>
+
+      {/* 9. Confían en Nosotros */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <TrustedBySection />
+      </div>
+
+      {/* 10. Aprende */}
+      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
+        <EducationSection />
+      </div>
+
+      {/* 11. Footer (Sección de Contacto y Mapa) */}
+      <div className="snap-start snap-always w-full">
+        <Footer />
+      </div>
     </main>
   );
 }

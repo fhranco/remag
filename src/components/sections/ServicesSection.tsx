@@ -1,83 +1,127 @@
 "use client";
-import { motion } from "framer-motion";
-import { Container, SectionTitle } from "@/components/ui";
-import { services } from "@/data";
-import { Recycle, Factory, ShieldCheck, LineChart, Truck, BookOpen, ArrowRight } from "lucide-react";
 
-const icons: Record<string, any> = {
-  Recycle, Factory, ShieldCheck, LineChart, Truck, BookOpen
-};
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Container } from "@/components/ui";
+import { Trash2, Package, Network, Truck, Inbox } from "lucide-react";
+
+const services = [
+  {
+    id: 0,
+    title: "Gestión de Residuos",
+    description: "Recolección, clasificación y disposición final de residuos, asegurando el cumplimiento de los estándares ambientales y normativos.",
+    icon: <Trash2 className="w-8 h-8 stroke-[1.5]" />,
+    posClass: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+  },
+  {
+    id: 1,
+    title: "Valorización de Materiales",
+    description: "Transformamos los residuos en recursos a través de procesos de reciclaje y acondicionamiento para nuevas cadenas de valor.",
+    icon: <Package className="w-8 h-8 stroke-[1.5]" />,
+    posClass: "top-1/2 right-0 translate-x-1/2 -translate-y-1/2",
+  },
+  {
+    id: 2,
+    title: "Proyectos Circulares",
+    description: "Diseñamos, implementamos y promovemos estrategias y soluciones para corregir las externalidades negativas y fomentamos las externalidades positivas de las empresas a múltiples partes interesadas.",
+    icon: <Network className="w-8 h-8 stroke-[1.5]" />,
+    posClass: "bottom-[14.6%] right-[14.6%] translate-x-1/2 translate-y-1/2",
+  },
+  {
+    id: 3,
+    title: "Logística y Transporte",
+    description: "Flota especializada para el transporte seguro y eficiente de materiales, optimizando rutas y reduciendo la huella de carbono operacional.",
+    icon: <Truck className="w-8 h-8 stroke-[1.5]" />,
+    posClass: "bottom-[14.6%] left-[14.6%] -translate-x-1/2 translate-y-1/2",
+  },
+  {
+    id: 4,
+    title: "Recepción de Materiales",
+    description: "Puntos de acopio acondicionados para la recepción eficiente de materiales reciclables, con trazabilidad desde el origen.",
+    icon: <Inbox className="w-8 h-8 stroke-[1.5]" />,
+    posClass: "top-1/2 left-0 -translate-x-1/2 -translate-y-1/2",
+  }
+];
 
 export const ServicesSection = () => {
+  const [activeId, setActiveId] = useState(2);
+
   return (
-    <section id="servicios" className="py-40 bg-white">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-24 items-end">
-          <div className="lg:col-span-8">
-            <SectionTitle 
-              subtitle="Soluciones"
-              title="Gestión Técnica de Residuos"
-            />
-            <div className="mt-12 relative h-96 w-full overflow-hidden organic-border">
-               <img 
-                 src="/remag_truck_operation_1778584898577.png" 
-                 alt="REMAG Operational Truck" 
-                 className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-remag-blue-deep/60 to-transparent" />
-               <div className="absolute bottom-8 left-8">
-                  <span className="text-[10px] font-black uppercase tracking-[0.5em] text-remag-teal italic">Logística de Alta Precisión</span>
-               </div>
-            </div>
-          </div>
-          <div className="lg:col-span-4 pb-2">
-            <p className="text-sm font-medium text-remag-gray-text italic border-l-2 border-remag-green pl-6">
-              Operamos con los estándares más altos de trazabilidad y responsabilidad ambiental en Magallanes.
-            </p>
-          </div>
+    <section id="servicios" className="py-16 md:py-20 bg-white relative overflow-hidden w-full">
+      {/* Background vertical subtle lines as in image */}
+      <div className="absolute inset-0 z-0 pointer-events-none flex justify-around">
+        <div className="w-px h-full bg-black/[0.03]"></div>
+        <div className="w-px h-full bg-black/[0.03]"></div>
+        <div className="w-px h-full bg-black/[0.03]"></div>
+        <div className="w-px h-full bg-black/[0.03]"></div>
+      </div>
+
+      <Container className="relative z-10">
+        
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-5xl font-display font-black uppercase text-remag-blue-deep mb-4 tracking-tight">Nuestros Servicios</h2>
+          <p className="text-sm font-sans font-normal uppercase tracking-[0.2em] text-remag-teal">
+            Gestión Integral de Residuos
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-black/5">
-          {services.map((service, index) => {
-            const Icon = icons[service.icon];
-            return (
-              <motion.div 
-                key={service.id}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group p-12 border-r border-b border-black/5 hover:bg-remag-blue-deep transition-all duration-700 relative overflow-hidden flex flex-col min-h-[400px]"
+        {/* Orbital Layout Container */}
+        <div className="relative w-full max-w-[500px] mx-auto aspect-square my-10">
+          
+          {/* Thin Orbit Ring */}
+          <div className="absolute inset-0 rounded-full border border-black/10"></div>
+          
+          {/* Central Large Circle */}
+          <div className="absolute inset-[18%] bg-[#f4f4f4] rounded-full shadow-[inset_0_4px_20px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center p-6 md:p-10 transition-all duration-500 overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeId}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="flex flex-col items-center"
               >
-                <div className="mb-10 text-remag-teal group-hover:text-remag-green transition-colors">
-                  <Icon size={48} strokeWidth={1} />
+                {/* Active Icon Colored */}
+                <div className="text-remag-teal mb-3 md:mb-4">
+                  {services[activeId].icon}
                 </div>
                 
-                <div className="space-y-4 mb-10 flex-grow">
-                  <h3 className="text-2xl font-black uppercase italic tracking-tighter text-remag-blue-deep group-hover:text-white leading-none">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm font-medium text-remag-gray-text italic group-hover:text-white/40 leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {service.materials?.slice(0, 3).map(m => (
-                    <span key={m} className="text-[8px] font-black uppercase tracking-widest px-2 py-1 bg-remag-gray-light text-remag-blue-deep italic group-hover:bg-white/10 group-hover:text-white">
-                      {m}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex items-center justify-between pt-6 border-t border-black/5 group-hover:border-white/10">
-                   <span className="text-[10px] font-mono text-black/10 group-hover:text-white/10">0{index+1}_STATION</span>
-                   <ArrowRight className="text-remag-teal group-hover:translate-x-2 transition-transform" size={20} />
-                </div>
+                <h3 className="text-xl md:text-2xl font-display font-black uppercase text-remag-blue-deep mb-2 tracking-tight">
+                  {services[activeId].title}
+                </h3>
+                
+                <p className="text-xs md:text-sm font-sans text-gray-500 leading-relaxed font-normal max-w-[280px]">
+                  {services[activeId].description}
+                </p>
               </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Orbit Nodes */}
+          {services.map((service) => {
+            const isActive = service.id === activeId;
+            return (
+              <button
+                key={service.id}
+                onClick={() => setActiveId(service.id)}
+                className={`absolute ${service.posClass} w-14 h-14 md:w-[72px] md:h-[72px] rounded-full flex items-center justify-center transition-all duration-300 shadow-[0_10px_20px_rgba(0,0,0,0.08)] hover:scale-110 z-20 focus:outline-none focus:ring-4 focus:ring-remag-teal/30
+                  ${isActive 
+                    ? 'bg-remag-teal text-white' 
+                    : 'bg-black text-white hover:bg-gray-900'
+                  }
+                `}
+                aria-label={service.title}
+              >
+                <div className={isActive ? "scale-110 transition-transform" : "scale-100 transition-transform"}>
+                  {service.icon}
+                </div>
+              </button>
             );
           })}
+
         </div>
+
       </Container>
     </section>
   );

@@ -1,60 +1,50 @@
 export const navigation = [
   { name: 'Inicio', href: '/' },
-  { name: 'Quiénes somos', href: '#quienes-somos' },
-  { name: 'Servicios', href: '#servicios' },
-  { name: 'Ley REP', href: '#ley-rep' },
-  { name: 'Comunidad', href: '#comunidad' },
-  { name: 'Educación ambiental', href: '#educacion' },
-  { name: 'Contacto', href: '#contacto' },
+  { name: 'Quiénes Somos', href: '/quienes-somos' },
+  { name: 'Servicios', href: '/#servicios' },
+  { name: 'Diferenciación', href: '/#diferenciacion' },
+  { name: 'Educación', href: '/#educacion' },
+  { name: 'Confianza', href: '/#alianzas' },
+  { name: 'Contacto', href: '/#contacto' },
 ];
 
 export const services = [
   {
-    id: 'residuos-reciclables',
-    title: 'Gestión de residuos reciclables',
-    description: 'Recepcionamos, clasificamos y gestionamos residuos reciclables, promoviendo su correcta valorización.',
-    materials: ['Vidrio', 'Cartón', 'Papel', 'Plástico', 'Metales'],
+    id: 'residuos-domiciliarios',
+    title: 'Gestión de residuos domiciliarios',
+    description: 'Puntos limpios, puntos verdes, recolección y educación ambiental activa en el territorio.',
+    materials: ['Puntos Limpios', 'Puntos Verdes', 'Recolección', 'Educación'],
     icon: 'Recycle'
   },
   {
-    id: 'residuos-industriales',
-    title: 'Gestión de residuos industriales',
-    description: 'Apoyamos a empresas e industrias en la gestión de sus residuos, considerando requerimientos operativos y logísticos.',
-    idealFor: 'Empresas productivas, constructoras, operaciones industriales.',
+    id: 'gestion-industrial',
+    title: 'Gestión industrial',
+    description: 'Recepción, clasificación y valorización de residuos en plantas especializadas adaptadas al entorno.',
+    materials: ['Clasificación', 'Recepción', 'Valorización', 'Logística'],
     icon: 'Factory'
   },
   {
-    id: 'ley-rep',
-    title: 'Apoyo en cumplimiento Ley REP',
-    description: 'Orientamos a empresas que deben gestionar residuos asociados a productos prioritarios.',
+    id: 'cumplimiento-rep',
+    title: 'Cumplimiento Ley REP',
+    description: 'Trazabilidad completa, reportes y gestión con sistemas integrados para productores prioritarios.',
+    materials: ['Trazabilidad', 'Reportes', 'Sistemas Integrados'],
     icon: 'ShieldCheck'
   },
   {
-    id: 'trazabilidad',
-    title: 'Trazabilidad y certificación',
-    description: 'Procesos que permiten respaldar la gestión realizada y entregar confianza sobre cada etapa.',
+    id: 'asesoria-tecnica',
+    title: 'Asesoría técnica',
+    description: 'Acompañamiento en cumplimiento normativo y optimización de procesos de gestión de residuos.',
+    materials: ['Cumplimiento Normativo', 'Optimización', 'Procesos'],
     icon: 'LineChart'
-  },
-  {
-    id: 'bateas',
-    title: 'Arriendo de bateas',
-    description: 'Capacidad operativa para el retiro y traslado de residuos desde puntos de generación.',
-    icon: 'Truck'
-  },
-  {
-    id: 'educacion',
-    title: 'Educación ambiental',
-    description: 'Ayudamos a comprender cómo separar, gestionar y reducir los residuos.',
-    icon: 'BookOpen'
   }
 ];
 
 export const values = [
-  { title: 'Responsabilidad', desc: 'Cumplimos con la normativa vigente resguardando la confianza de todos.', icon: 'ShieldCheck' },
-  { title: 'Sostenibilidad', desc: 'Fomentamos la reutilización de materiales en un modelo de economía circular.', icon: 'Leaf' },
-  { title: 'Vinculación', desc: 'Trabajamos con empresas, municipios y comunidades locales.', icon: 'Users' },
-  { title: 'Territorio', desc: 'Nuestra identidad está profundamente ligada a Magallanes.', icon: 'Mountain' },
-  { title: 'Seguridad', desc: 'Priorizamos protocolos responsables para proteger a nuestros equipos.', icon: 'Lock' }
+  { title: 'Conocimiento Geográfico', description: 'Operamos en condiciones invernales extremas con rutas logísticas resilientes.', icon: 'Mountain' },
+  { title: 'Infraestructura Propia', description: 'Plantas de acopio y clasificación estratégicamente ubicadas en Magallanes.', icon: 'Shield' },
+  { title: 'Certificación en Origen', description: 'Cada kilo recibido se pesa y clasifica con registro auditable inmediato.', icon: 'Truck' },
+  { title: 'Capital Humano Local', description: 'Generamos empleo especializado en Magallanes, fortaleciendo capacidades técnicas locales.', icon: 'Users' },
+  { title: 'Socio a Largo Plazo', description: 'No tercerizamos la responsabilidad legal; REMAG responde directamente ante fiscalizaciones.', icon: 'Heart' }
 ];
 
 export const valueChain = [
@@ -73,3 +63,4 @@ export const priorityProducts = [
   'Pilas',
   'Baterías'
 ];
+

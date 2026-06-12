@@ -93,10 +93,83 @@ export const ValueChainSection = () => {
           ))}
         </div>
 
-        <div className="mt-40 pt-20 border-t border-remag-blue-deep/5 text-center">
-          <blockquote className="text-3xl md:text-5xl font-black italic text-remag-blue-deep leading-none tracking-tighter uppercase max-w-4xl mx-auto">
-             "No solo movemos residuos. Activamos procesos que ayudan a construir una región más sostenible."
+        {/* 🏔️ CONCEPTO EMOCIONAL */}
+        <div className="mt-40 pt-20 border-t border-remag-blue-deep/10 text-center max-w-4xl mx-auto space-y-8">
+          <span className="text-[10px] font-black uppercase tracking-[0.5em] text-remag-teal italic block">
+            Cómo lo explicamos fácil
+          </span>
+          <blockquote className="text-3xl md:text-5xl font-black italic text-remag-blue-deep leading-none tracking-tighter uppercase">
+             "Somos el capitán de un equipo que cuida la tierra."
           </blockquote>
+          <p className="text-lg font-medium text-remag-gray-text italic leading-relaxed">
+            No lo hacemos solos. Es una cadena donde cada persona cumple un rol. Nuestro trabajo es facilitar, educar y acompañar para que juntos protejamos el único lugar que tenemos.
+          </p>
+        </div>
+
+        {/* 🏔️ CULTURA Y VISIÓN */}
+        <div className="mt-32 grid grid-cols-1 lg:grid-cols-2 gap-20 pt-20 border-t border-remag-blue-deep/10">
+          {/* CULTURA */}
+          <div className="space-y-8">
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-remag-green italic block">
+              Quiénes somos
+            </span>
+            <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-remag-blue-deep leading-none">
+              Nuestra Cultura
+            </h3>
+            <p className="text-sm font-medium text-remag-gray-text italic">
+              Un equipo que lidera con conocimiento, compromiso y sentido de propósito. REMAG es:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { title: "Cercano", desc: "pero técnico" },
+                { title: "Directo", desc: "pero colaborativo" },
+                { title: "Experto", desc: "pero en constante aprendizaje" },
+                { title: "Orgullosamente", desc: "magallánico" }
+              ].map((item, idx) => (
+                <div key={idx} className="p-6 bg-white border border-black/5 hover:border-remag-green transition-all duration-300">
+                  <span className="text-lg font-black uppercase italic tracking-tighter text-remag-blue-deep block">
+                    {item.title}
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-remag-teal italic">
+                    {item.desc}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* VISIÓN */}
+          <div className="space-y-8">
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-remag-teal italic block">
+              Hacia dónde vamos
+            </span>
+            <h3 className="text-3xl md:text-4xl font-black uppercase italic tracking-tighter text-remag-blue-deep leading-none">
+              Nuestra Visión
+            </h3>
+            <p className="text-base font-bold text-remag-blue-deep italic uppercase tracking-tighter leading-snug">
+              Queremos que Magallanes sea un referente global en sostenibilidad.
+            </p>
+            <div className="space-y-6">
+              <span className="text-xs font-black uppercase tracking-widest text-remag-green italic block border-b border-black/5 pb-2">
+                En 10 años buscamos:
+              </span>
+              <ul className="space-y-4">
+                {[
+                  "Una cultura ambiental activa en toda la región",
+                  "Un sistema de economía circular consolidado",
+                  "Una comunidad consciente y comprometida"
+                ].map((goal, idx) => (
+                  <li key={idx} className="flex items-center gap-3 text-sm font-medium text-remag-gray-text italic">
+                    <span className="w-1.5 h-1.5 bg-remag-teal rounded-full shrink-0" />
+                    {goal}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs font-medium text-remag-gray-text/70 italic border-l-2 border-remag-green pl-4 pt-2">
+                Trabajamos para que el concepto de “basura” desaparezca y sea reemplazado por “recurso”.
+              </p>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
