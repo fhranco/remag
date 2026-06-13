@@ -72,7 +72,7 @@ export const ServicesSection = () => {
           <div className="absolute inset-0 rounded-full border border-black/10"></div>
           
           {/* Central Large Circle */}
-          <div className="absolute inset-[18%] bg-[#f4f4f4] rounded-full shadow-[inset_0_4px_20px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center p-4 md:p-10 transition-all duration-500 overflow-hidden">
+          <div className="absolute inset-[12%] bg-[#f4f4f4] rounded-full shadow-[inset_0_4px_20px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center p-4 md:p-10 transition-all duration-500 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeId}
@@ -87,11 +87,11 @@ export const ServicesSection = () => {
                   {services[activeId].icon}
                 </div>
                 
-                <h3 className="text-[11px] xs:text-xs sm:text-sm md:text-2xl font-display font-black uppercase text-remag-blue-deep mb-1 sm:mb-2 tracking-tight leading-tight">
+                <h3 className="text-xs xs:text-sm sm:text-base md:text-2xl font-display font-black uppercase text-remag-blue-deep mb-1 sm:mb-2 tracking-tight leading-tight">
                   {services[activeId].title}
                 </h3>
                 
-                <p className="text-[8px] xs:text-[9px] sm:text-[10px] md:text-sm font-sans text-gray-500 leading-normal md:leading-relaxed font-normal max-w-[160px] xs:max-w-[200px] md:max-w-[280px] px-1">
+                <p className="text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-sans text-gray-500 leading-normal md:leading-relaxed font-normal max-w-[180px] xs:max-w-[220px] md:max-w-[280px] px-1">
                   {services[activeId].description}
                 </p>
               </motion.div>
