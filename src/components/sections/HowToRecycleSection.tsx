@@ -97,10 +97,117 @@ const materialsGuide = [
   }
 ];
 
-export const HowToRecycleSection = () => {
+export const HowToRecycleSection = ({ isEmbedded = false }: { isEmbedded?: boolean }) => {
   const [activeTab, setActiveTab] = useState(materialsGuide[0].id);
 
   const activeData = materialsGuide.find(m => m.id === activeTab) || materialsGuide[0];
+
+  const content = (
+    <div className={`flex flex-col lg:flex-row gap-8 lg:gap-16 max-w-7xl mx-auto items-center lg:items-start ${isEmbedded ? "px-8 md:px-16" : ""}`}>
+      {/* Sidebar Menu */}
+      <div className="w-full lg:w-[35%] flex flex-col gap-3">
+        {materialsGuide.map((mat) => {
+          const isActive = activeTab === mat.id;
+          return (
+            <button
+              key={mat.id}
+              onClick={() => setActiveTab(mat.id)}
+              className={`flex items-center justify-between py-3.5 px-4 rounded-2xl transition-all duration-300 outline-none
+                ${isActive 
+                  ? 'bg-gray-50 shadow-md border border-gray-100 scale-105 z-10' 
+                  : 'bg-white hover:bg-gray-50 border border-transparent text-gray-500'
+                }
+              `}
+            >
+              <div className="flex items-center gap-4">
+                <div className={`p-3 rounded-xl transition-colors ${isActive ? mat.color + ' text-white shadow-lg' : 'bg-gray-100'}`}>
+                  {mat.icon}
+                </div>
+                <span className={`font-display font-black text-lg text-left ${isActive ? 'text-gray-900' : 'text-gray-500'}`}>
+                  {mat.name}
+                </span>
+              </div>
+              <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'rotate-90 lg:rotate-0 text-gray-900' : 'text-gray-300'}`} />
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Clean Content Panel */}
+      <div className="w-full lg:w-[65%]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="relative"
+          >
+            {/* Background Watermark */}
+            <div className="absolute right-0 top-0 opacity-[0.02] pointer-events-none transform translate-x-1/4 -translate-y-1/4">
+              <div className={`w-96 h-96 ${activeData.textColor}`}>
+                {activeData.icon}
+              </div>
+            </div>
+
+            <div className="mb-6 relative z-10">
+              <h3 className={`text-3xl md:text-4xl font-display font-black uppercase tracking-tight mb-3 ${activeData.textColor}`}>
+                {activeData.name}
+              </h3>
+              <div className="w-12 h-1.5 rounded-full bg-gray-200"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
+              {/* SÍ RECICLAMOS */}
+              <div>
+                <h4 className="flex items-center gap-2 font-display font-black uppercase text-emerald-500 text-lg mb-4 tracking-tight">
+                  <CheckCircle2 className="w-5 h-5" /> SÍ RECIBIMOS
+                </h4>
+                <ul className="space-y-4">
+                  {activeData.yesItems.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 group">
+                      <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl shrink-0 group-hover:scale-110 transition-transform">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h5 className="font-display font-black uppercase text-xs text-gray-900 mb-1">{item.title}</h5>
+                        <p className="text-xs font-sans font-normal text-gray-500 leading-relaxed">{item.reason}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* NO RECICLAMOS */}
+              <div>
+                <h4 className="flex items-center gap-2 font-display font-black uppercase text-gray-500 text-lg mb-4 tracking-tight">
+                  <XCircle className="w-5 h-5" /> NO RECIBIMOS
+                </h4>
+                <ul className="space-y-4">
+                  {activeData.noItems.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 group">
+                      <div className="p-2 bg-gray-100 text-gray-500 rounded-xl shrink-0 group-hover:scale-110 transition-transform">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h5 className="font-display font-black uppercase text-xs text-gray-900 mb-1">{item.title}</h5>
+                        <p className="text-xs font-sans font-normal text-gray-500 leading-relaxed">{item.reason}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+
+  if (isEmbedded) {
+    return content;
+  }
 
   return (
     <section className="py-8 md:py-12 bg-white relative w-full">
@@ -111,111 +218,7 @@ export const HowToRecycleSection = () => {
             Selecciona un material para conocer exactamente qué elementos recibimos y cuáles debes evitar.
           </p>
         </div>
-
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 max-w-7xl mx-auto items-center lg:items-start">
-          
-          {/* Sidebar Menu */}
-          <div className="w-full lg:w-[35%] flex flex-col gap-3">
-            {materialsGuide.map((mat) => {
-              const isActive = activeTab === mat.id;
-              return (
-                <button
-                  key={mat.id}
-                  onClick={() => setActiveTab(mat.id)}
-                  className={`flex items-center justify-between py-3.5 px-4 rounded-2xl transition-all duration-300 outline-none
-                    ${isActive 
-                      ? 'bg-gray-50 shadow-md border border-gray-100 scale-105 z-10' 
-                      : 'bg-white hover:bg-gray-50 border border-transparent text-gray-500'
-                    }
-                  `}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 rounded-xl transition-colors ${isActive ? mat.color + ' text-white shadow-lg' : 'bg-gray-100'}`}>
-                      {mat.icon}
-                    </div>
-                    <span className={`font-display font-black text-lg text-left ${isActive ? 'text-gray-900' : 'text-gray-500'}`}>
-                      {mat.name}
-                    </span>
-                  </div>
-                  <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'rotate-90 lg:rotate-0 text-gray-900' : 'text-gray-300'}`} />
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Clean Content Panel */}
-          <div className="w-full lg:w-[65%]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="relative"
-              >
-                
-                {/* Background Watermark */}
-                <div className="absolute right-0 top-0 opacity-[0.02] pointer-events-none transform translate-x-1/4 -translate-y-1/4">
-                  <div className={`w-96 h-96 ${activeData.textColor}`}>
-                    {activeData.icon}
-                  </div>
-                </div>
-
-                <div className="mb-6 relative z-10">
-                  <h3 className={`text-3xl md:text-4xl font-display font-black uppercase tracking-tight mb-3 ${activeData.textColor}`}>
-                    {activeData.name}
-                  </h3>
-                  <div className="w-12 h-1.5 rounded-full bg-gray-200"></div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
-                  
-                  {/* SÍ RECICLAMOS */}
-                  <div>
-                    <h4 className="flex items-center gap-2 font-display font-black uppercase text-emerald-500 text-lg mb-4 tracking-tight">
-                      <CheckCircle2 className="w-5 h-5" /> SÍ RECIBIMOS
-                    </h4>
-                    <ul className="space-y-4">
-                      {activeData.yesItems.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 group">
-                          <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl shrink-0 group-hover:scale-110 transition-transform">
-                            {item.icon}
-                          </div>
-                          <div>
-                            <h5 className="font-display font-black uppercase text-xs text-gray-900 mb-1">{item.title}</h5>
-                            <p className="text-xs font-sans font-normal text-gray-500 leading-relaxed">{item.reason}</p>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* NO RECICLAMOS */}
-                  <div>
-                    <h4 className="flex items-center gap-2 font-display font-black uppercase text-gray-500 text-lg mb-4 tracking-tight">
-                      <XCircle className="w-5 h-5" /> NO RECIBIMOS
-                    </h4>
-                    <ul className="space-y-4">
-                      {activeData.noItems.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-3 group">
-                          <div className="p-2 bg-gray-100 text-gray-500 rounded-xl shrink-0 group-hover:scale-110 transition-transform">
-                            {item.icon}
-                          </div>
-                          <div>
-                            <h5 className="font-display font-black uppercase text-xs text-gray-900 mb-1">{item.title}</h5>
-                            <p className="text-xs font-sans font-normal text-gray-500 leading-relaxed">{item.reason}</p>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
+        {content}
       </Container>
     </section>
   );

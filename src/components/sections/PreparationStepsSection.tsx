@@ -31,46 +31,62 @@ const prepSteps = [
   }
 ];
 
-export const PreparationStepsSection = () => {
-  return (
-    <section className="py-24 bg-remag-blue-deep text-white relative overflow-hidden">
-      <Container>
+export const PreparationStepsSection = ({ isEmbedded = false }: { isEmbedded?: boolean }) => {
+  const content = (
+    <div className={`${isEmbedded ? "max-w-7xl mx-auto" : ""}`}>
+      {!isEmbedded && (
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-3xl md:text-5xl font-display font-black uppercase text-white mb-6 tracking-tight">¿Cómo Reciclar?</h2>
           <p className="text-white/80 max-w-2xl mx-auto text-lg font-sans font-normal leading-relaxed">
             El éxito del reciclaje y del trabajo de los recicladores de base comienza en casa. Aplica nuestra <strong>regla de oro de 4 pasos</strong> antes de separar tus residuos.
           </p>
         </div>
+      )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 max-w-7xl mx-auto relative pt-8">
-          
-          {/* Connector Line for Desktop */}
-          <div className="hidden lg:block absolute top-[4.5rem] left-[12%] right-[12%] h-0.5 bg-white/10 z-0 rounded-full"></div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 max-w-7xl mx-auto relative pt-8">
+        
+        {/* Connector Line for Desktop */}
+        <div className="hidden lg:block absolute top-[4.5rem] left-[12%] right-[12%] h-0.5 bg-white/10 z-0 rounded-full"></div>
 
-          {prepSteps.map((step, idx) => (
-            <motion.div 
-              key={idx}
-              whileHover={{ y: -10 }}
-              className="relative z-10 flex flex-col items-center text-center group"
-            >
-              <div className={`w-28 h-28 rounded-full flex items-center justify-center shadow-xl mb-8 border-4 transition-transform duration-500 group-hover:scale-110 ${step.color}`}>
-                {step.icon}
+        {prepSteps.map((step, idx) => (
+          <motion.div 
+            key={idx}
+            whileHover={{ y: -10 }}
+            className="relative z-10 flex flex-col items-center text-center group"
+          >
+            <div className={`w-28 h-28 rounded-full flex items-center justify-center shadow-xl mb-8 border-4 transition-transform duration-500 group-hover:scale-110 ${step.color}`}>
+              {step.icon}
+            </div>
+            
+            <div className="bg-white/5 border border-white/10 backdrop-blur-sm px-6 pb-6 pt-6 rounded-3xl w-full">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <span className="w-7 h-7 rounded-full bg-white text-remag-blue-deep text-sm font-bold flex items-center justify-center shadow-md">
+                  {idx + 1}
+                </span>
+                <h3 className="font-display font-black uppercase text-xl text-white tracking-tight">{step.title}</h3>
               </div>
-              
-              <div className="bg-white/5 border border-white/10 backdrop-blur-sm px-6 pb-6 pt-6 rounded-3xl w-full">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <span className="w-7 h-7 rounded-full bg-white text-remag-blue-deep text-sm font-bold flex items-center justify-center shadow-md">
-                    {idx + 1}
-                  </span>
-                  <h3 className="font-display font-black uppercase text-xl text-white tracking-tight">{step.title}</h3>
-                </div>
-                <p className="text-white/70 text-sm leading-relaxed font-sans font-normal">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              <p className="text-white/70 text-sm leading-relaxed font-sans font-normal">
+                {step.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+
+  if (isEmbedded) {
+    return (
+      <div className="mx-8 md:mx-16 bg-remag-blue-deep text-white rounded-[2rem] p-10 md:p-16 overflow-hidden relative shadow-xl">
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <section className="py-24 bg-remag-blue-deep text-white relative overflow-hidden">
+      <Container>
+        {content}
       </Container>
     </section>
   );

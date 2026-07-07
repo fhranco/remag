@@ -2,9 +2,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { SustainableSolutionsSection } from "@/components/sections/SustainableSolutionsSection";
 import { ValuesSection } from "@/components/sections/ValuesSection";
-import { HowToRecycleSection } from "@/components/sections/HowToRecycleSection";
-import { PreparationStepsSection } from "@/components/sections/PreparationStepsSection";
-import { WhereToRecycleSection } from "@/components/sections/WhereToRecycleSection";
+import { RecycleTabbedSection } from "@/components/sections/RecycleTabbedSection";
 import { LeyRepSection } from "@/components/sections/LeyRepSection";
 import { ComplianceSection } from "@/components/sections/ComplianceSection";
 import { TrustedBySection } from "@/components/sections/TrustedBySection";
@@ -34,19 +32,9 @@ export default function Home() {
         <ValuesSection />
       </div>
 
-      {/* 6. El cuidado del medio ambiente parte por casa: Qué reciclar */}
+      {/* 6. Guía de Reciclaje (Qué, Cómo y Dónde) */}
       <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
-        <HowToRecycleSection />
-      </div>
-
-      {/* 6. El cuidado del medio ambiente parte por casa: Cómo reciclar */}
-      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
-        <PreparationStepsSection />
-      </div>
-
-      {/* 6. El cuidado del medio ambiente parte por casa: Dónde reciclar */}
-      <div className="snap-start snap-always min-h-[100dvh] w-full flex flex-col justify-center">
-        <WhereToRecycleSection />
+        <RecycleTabbedSection />
       </div>
 
       {/* 7. Ley REP */}
