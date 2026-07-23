@@ -166,25 +166,30 @@ const materialSteps = {
 };
 
 const materialSelector = [
-  { id: "todos" as MaterialKey, name: "General", icon: <Recycle className="w-4 h-4" /> },
-  { id: "plastico" as MaterialKey, name: "Plásticos", icon: <Recycle className="w-4 h-4" /> },
-  { id: "papel" as MaterialKey, name: "Papeles/Cartón", icon: <FileText className="w-4 h-4" /> },
-  { id: "vidrio" as MaterialKey, name: "Vidrio", icon: <Wine className="w-4 h-4" /> },
-  { id: "metal" as MaterialKey, name: "Metales", icon: <Archive className="w-4 h-4" /> },
-  { id: "tetra" as MaterialKey, name: "Tetra Pak", icon: <Milk className="w-4 h-4" /> },
+  { id: "todos" as MaterialKey, name: "General", icon: <Recycle className="w-4 h-4" />, activeColor: "bg-remag-teal text-white", bgColor: "bg-[#154e70]", isDark: true },
+  { id: "papel" as MaterialKey, name: "Papeles/Cartón", icon: <FileText className="w-4 h-4" />, activeColor: "bg-white text-[#0c0c68]", bgColor: "bg-[#0c0c68]", isDark: true },
+  { id: "plastico" as MaterialKey, name: "Plásticos", icon: <Recycle className="w-4 h-4" />, activeColor: "bg-gray-900 text-white", bgColor: "bg-[#eac114]", isDark: false },
+  { id: "tetra" as MaterialKey, name: "Cartón para Líquidos", icon: <Milk className="w-4 h-4" />, activeColor: "bg-gray-900 text-white", bgColor: "bg-[#cc9966]", isDark: true },
+  { id: "metal" as MaterialKey, name: "Metales", icon: <Archive className="w-4 h-4" />, activeColor: "bg-white text-gray-900", bgColor: "bg-[#6b7280]", isDark: true },
+  { id: "vidrio" as MaterialKey, name: "Vidrio", icon: <Wine className="w-4 h-4" />, activeColor: "bg-white text-[#1d9a38]", bgColor: "bg-[#1d9a38]", isDark: true },
 ];
 
 export const PreparationStepsSection = ({ isEmbedded = false }: { isEmbedded?: boolean }) => {
   const [selectedMaterial, setSelectedMaterial] = useState<MaterialKey>("todos");
 
   const activeSteps = materialSteps[selectedMaterial];
+  const activeMaterialConfig = materialSelector.find(m => m.id === selectedMaterial) || materialSelector[0];
+
+  const isDark = activeMaterialConfig.isDark;
 
   const content = (
     <div className={`${isEmbedded ? "max-w-7xl mx-auto" : ""}`}>
       {!isEmbedded && (
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-display font-black uppercase text-white mb-6 tracking-tight">¿Cómo Reciclar?</h2>
-          <p className="text-white/80 max-w-2xl mx-auto text-lg font-sans font-normal leading-relaxed">
+          <h2 className={`text-3xl md:text-5xl font-display font-black uppercase mb-6 tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            ¿Cómo Reciclar?
+          </h2>
+          <p className={`max-w-2xl mx-auto text-lg font-sans font-normal leading-relaxed ${isDark ? 'text-white/80' : 'text-gray-900/80'}`}>
             El éxito del reciclaje y del trabajo de los recicladores de base comienza en casa. Aplica nuestra <strong>regla de oro de 4 pasos</strong> antes de separar tus residuos.
           </p>
         </div>
@@ -192,7 +197,7 @@ export const PreparationStepsSection = ({ isEmbedded = false }: { isEmbedded?: b
 
       {/* Sub-selector de Materiales */}
       <div className="flex justify-center mb-10 overflow-x-auto no-scrollbar py-2">
-        <div className="flex gap-2 p-1 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl max-w-full">
+        <div className={`flex gap-2 p-1.5 rounded-2xl max-w-full backdrop-blur-md border ${isDark ? 'bg-black/20 border-white/20' : 'bg-black/10 border-black/10'}`}>
           {materialSelector.map((mat) => {
             const isActive = selectedMaterial === mat.id;
             return (
@@ -201,8 +206,10 @@ export const PreparationStepsSection = ({ isEmbedded = false }: { isEmbedded?: b
                 onClick={() => setSelectedMaterial(mat.id)}
                 className={`flex items-center gap-2 py-2.5 px-4 rounded-xl transition-all duration-300 outline-none whitespace-nowrap text-xs font-display font-black uppercase tracking-wider
                   ${isActive 
-                    ? "bg-white text-remag-blue-deep shadow-md font-bold scale-105" 
-                    : "text-white/60 hover:text-white hover:bg-white/5"
+                    ? `${mat.activeColor} shadow-lg scale-105` 
+                    : isDark 
+                      ? "text-white/70 hover:text-white hover:bg-white/10" 
+                      : "text-gray-900/70 hover:text-gray-900 hover:bg-black/10"
                   }
                 `}
               >
@@ -216,7 +223,7 @@ export const PreparationStepsSection = ({ isEmbedded = false }: { isEmbedded?: b
 
       <div className="relative pt-4">
         {/* Connector Line for Desktop */}
-        <div className="hidden lg:block absolute top-[4.5rem] left-[12%] right-[12%] h-0.5 bg-white/10 z-0 rounded-full"></div>
+        <div className={`hidden lg:block absolute top-[4.5rem] left-[12%] right-[12%] h-0.5 z-0 rounded-full ${isDark ? 'bg-white/20' : 'bg-black/20'}`}></div>
 
         <AnimatePresence mode="wait">
           <motion.div 
@@ -234,18 +241,26 @@ export const PreparationStepsSection = ({ isEmbedded = false }: { isEmbedded?: b
                 className="relative z-10 flex flex-col items-center text-center group"
               >
                 {/* Circle Seal Container */}
-                <div className={`w-28 h-28 rounded-full flex items-center justify-center shadow-xl mb-8 border-4 transition-transform duration-500 group-hover:scale-110 relative z-20 ${step.color}`}>
+                <div className={`w-28 h-28 rounded-full flex items-center justify-center shadow-xl mb-8 border-4 bg-white transition-transform duration-500 group-hover:scale-110 relative z-20 ${step.color.replace('bg-[#154e70]', 'bg-white')}`}>
                   {step.icon}
                 </div>
                 
-                <div className="bg-white/5 border border-white/10 backdrop-blur-sm px-6 pb-6 pt-6 rounded-3xl w-full flex-grow min-h-[180px] flex flex-col justify-start">
+                <div className={`border backdrop-blur-md shadow-lg transition-all px-6 pb-6 pt-6 rounded-3xl w-full flex-grow min-h-[180px] flex flex-col justify-start ${
+                  isDark 
+                    ? 'bg-black/20 border-white/15 text-white' 
+                    : 'bg-white/40 border-black/15 text-gray-900'
+                }`}>
                   <div className="flex items-center justify-center gap-3 mb-4">
-                    <span className="w-7 h-7 rounded-full bg-white text-remag-blue-deep text-sm font-bold flex items-center justify-center shadow-md shrink-0">
+                    <span className={`w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center shadow-md shrink-0 ${
+                      isDark ? 'bg-white text-gray-900' : 'bg-gray-900 text-white'
+                    }`}>
                       {idx + 1}
                     </span>
-                    <h3 className="font-display font-black uppercase text-lg text-white tracking-tight">{step.title}</h3>
+                    <h3 className={`font-display font-black uppercase text-lg tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                      {step.title}
+                    </h3>
                   </div>
-                  <p className="text-white/70 text-xs md:text-sm leading-relaxed font-sans font-normal">
+                  <p className={`text-xs md:text-sm leading-relaxed font-sans font-normal ${isDark ? 'text-white/80' : 'text-gray-900/80'}`}>
                     {step.description}
                   </p>
                 </div>
@@ -259,14 +274,14 @@ export const PreparationStepsSection = ({ isEmbedded = false }: { isEmbedded?: b
 
   if (isEmbedded) {
     return (
-      <div className="mx-8 md:mx-16 bg-remag-blue-deep text-white rounded-[2rem] p-10 md:p-16 overflow-hidden relative shadow-xl">
+      <div className={`mx-8 md:mx-16 ${activeMaterialConfig.bgColor} rounded-[2rem] p-10 md:p-16 overflow-hidden relative shadow-xl transition-colors duration-500`}>
         {content}
       </div>
     );
   }
 
   return (
-    <section className="py-24 bg-remag-blue-deep text-white relative overflow-hidden">
+    <section className={`py-24 ${activeMaterialConfig.bgColor} relative overflow-hidden transition-colors duration-500`}>
       <div className="max-w-[1400px] mx-auto px-8 md:px-16 w-full">
         {content}
       </div>
